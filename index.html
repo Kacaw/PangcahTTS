@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海岸阿美語TTS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .secondary-button {
+            background-color: #7f8c8d;
+        }
+        .secondary-button:hover {
+            background-color: #6c7a7a;
+        }
+        .status {
+            margin-top: 20px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        #audioPlayer {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .examples {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .examples button {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 14px;
+            padding: 6px 12px;
+            background-color: #95a5a6;
+        }
+        .examples button:hover {
+            background-color: #7f8c8d;
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>海岸阿美語文字轉語音 (TTS)</h1>
+    
+    <div class="container">
+        <p>請輸入海岸阿美語文字：</p>
+        <textarea id="inputText" placeholder="例如：Nga'ay ho, o ngaay ko pising no mata. (你好，我的眼睛很痛)"></textarea>
+        
+        <div class="examples">
+            <p>示例短語：</p>
+            <button class="example-btn" data-text="Nga'ay ho">Nga'ay ho (你好)</button>
+            <button class="example-btn" data-text="Ci Panay kaku.">Ci Panay kaku (我是Panay)</button>
+            <button class="example-btn" data-text="Hakowa ko faloco' iso?">Hakowa ko faloco' iso? (你好嗎？)</button>
+            <button class="example-btn" data-text="O maan ko ngangan iso?">O maan ko ngangan iso? (你叫什麼名字？)</button>
+        </div>
+        
+        <div class="button-group">
+            <button id="generateButton">生成語音</button>
+            <button id="clearButton" class="secondary-button">清空輸入</button>
+            <button id="copyButton" class="secondary-button">複製文字</button>
+        </div>
+        
+        <div class="status" id="status">準備就緒</div>
+        
+        <audio id="audioPlayer" controls style="display: none;"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

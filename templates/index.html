@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海岸阿美語TTS - 本地版</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>海岸阿美語文字轉語音 (TTS)</h1>
+        <p class="subtitle">本地運行版本 - 使用 Hugging Face Transformers</p>
+        
+        <div class="card">
+            <div class="model-status" id="modelStatus">
+                {% if model_loaded %}
+                <span class="status-badge loaded">模型已加載</span>
+                {% else %}
+                <span class="status-badge not-loaded">模型未加載</span>
+                <button id="loadModelBtn" class="action-btn primary-btn">載入模型</button>
+                {% endif %}
+            </div>
+            
+            <div class="input-section">
+                <label for="inputText">輸入阿美語文字：</label>
+                <textarea id="inputText" rows="4" placeholder="例如：Nga'ay ho, o ngaay ko pising no mata."></textarea>
+            </div>
+            
+            <div class="examples">
+                <p>示例短語：</p>
+                <div class="example-buttons">
+                    <button class="example-btn" data-text="Nga'ay ho">Nga'ay ho (你好)</button>
+                    <button class="example-btn" data-text="Ci Panay kaku.">Ci Panay kaku (我是Panay)</button>
+                    <button class="example-btn" data-text="Hakowa ko faloco' iso?">Hakowa ko faloco' iso? (你好嗎？)</button>
+                    <button class="example-btn" data-text="O maan ko ngangan iso?">O maan ko ngangan iso? (你叫什麼名字？)</button>
+                </div>
+            </div>
+            
+            <div class="action-section">
+                <button id="generateBtn" class="action-btn primary-btn">生成語音</button>
+                <button id="clearBtn" class="action-btn secondary-btn">清空輸入</button>
+            </div>
+            
+            <div id="statusMsg" class="status-message"></div>
+            
+            <div id="audioSection" class="audio-section" style="display:none;">
+                <h3>生成的語音：</h3>
+                <audio id="audioPlayer" controls></audio>
+                <p class="audio-info">已生成語音，可點擊播放按鈕收聽</p>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>關於此應用</h2>
+            <p>這個應用在本地運行Facebook的MMS-TTS-AMI模型，無需網絡API。首次加載模型可能需要幾分鐘時間，請耐心等待。</p>
+            <p>模型下載自：<a href="https://huggingface.co/facebook/mms-tts-ami" target="_blank">facebook/mms-tts-ami</a></p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
