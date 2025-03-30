@@ -10,7 +10,33 @@
 - 提供常用示例短語
 - 音頻直接在瀏覽器中播放
 
+## 如何自行打包執行檔 (Build Instructions)
+
+如果您無法取得預先打包好的執行檔，或者想要自行建置，可以依照以下步驟操作：
+
+1.  **安裝 Python**：確保您的系統已安裝 Python (建議 3.8 或更高版本)。
+2.  **下載原始碼**：克隆 (clone) 或下載此專案的原始碼。
+3.  **安裝依賴套件**：開啟終端機 (Terminal) 或命令提示字元 (Command Prompt)，進入專案的根目錄，然後執行：
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **安裝 PyInstaller**：接著安裝打包工具 PyInstaller：
+    ```bash
+    pip install pyinstaller
+    ```
+5.  **執行打包**：在專案根目錄下，執行打包腳本：
+    ```bash
+    python build.py
+    ```
+6.  **取得執行檔**：如果打包成功，您會在專案內的 `dist` 資料夾中找到 `PangcahTTS.exe` (Windows) 或對應的執行檔 (macOS/Linux)。
+
+**打包提示：**
+*   如果在打包過程中遇到 `PermissionError` 或 `FileNotFoundError` 等錯誤，可以嘗試先執行 `pyinstaller --clean PangcahTTS.spec` 清理舊的建置檔案，然後再試一次 `python build.py`。
+*   請注意，您需要在目標作業系統上進行打包。例如，若要產生 Windows 的 `.exe` 檔，您需要在 Windows 環境下執行打包指令。
+
 ## 如何使用執行檔 (PangcahTTS.exe)
+
+如果您已取得或自行打包了 `PangcahTTS.exe` 檔案：
 
 1.  **取得檔案**：從提供者處取得 `PangcahTTS.exe` 檔案。
 2.  **執行程式**：直接雙擊 `PangcahTTS.exe` 來執行。
